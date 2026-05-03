@@ -1,1 +1,5 @@
 ipl_matches.csv
+node_modules/
+.env
+__pycache__/
+*.pyc
