@@ -181,13 +181,18 @@ with tab1:
             <div style="margin-bottom: 20px;">
                 <small style="color: var(--primary-accent); font-weight: 700;">QUALIFIER 1</small><br>
                 <span style="font-size: 1.2rem;">
+                    {top4[0]} 
                     <span style="opacity:0.3"> vs </span> 
+                    {top4[1]}
                 </span>
             </div>
             <div>
                 <small style="color: var(--secondary-accent); font-weight: 700;">ELIMINATOR</small><br>
                 <span style="font-size: 1.2rem;">
+                    {top4[2]} 
                     <span style="opacity:0.3"> vs </span> 
+                    {top4[3]}
+                </span>
             </div>
         </div>
         """, unsafe_allow_html=True)
