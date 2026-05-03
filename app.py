@@ -109,12 +109,27 @@ st.markdown("""
 # -------------------------
 # DATA LOADING & CLEANING
 # -------------------------
-try:
-    with open("results.json") as f:
-        raw_data = json.load(f)
-except FileNotFoundError:
-    raw_data = {"CSK": 320, "MI": 290, "RCB": 210, "GT": 180, "LSG": 140, "KKR": 250, "SRH": 220, "PBKS": 80}
+import requests
 
+try:
+    response = requests.get("https://ipl-predictor-te7x.onrender.com/probabilities", timeout=10)
+    response.raise_for_status()  # raises error if API fails
+    raw_data = response.json()
+
+except Exception:
+    # fallback data if API fails
+    raw_data = {
+        "Chennai Super Kings": 1.5,
+        "Delhi Capitals": 3.12,
+        "Gujarat Titans": 11.12,
+        "Kolkata Knight Riders": 1.25,
+        "Lucknow Super Giants": 3.12,
+        "Mumbai Indians": 1.62,
+        "Punjab Kings": 21.75,
+        "Rajasthan Royals": 6.0,
+        "Royal Challengers Bengaluru": 47.12,
+        "Sunrisers Hyderabad": 3.38
+    }
 # Standardize names to full names
 clean_data = {team_map.get(k, k): v for k, v in raw_data.items()}
 
